@@ -131,7 +131,7 @@ Keystone Installation Manually
      --bootstrap-region-id RegionOne
    ```
 
-# Configure the Apache HTTP server
+## Configure the Apache HTTP server
 
    1. Install apache http server
 
@@ -155,7 +155,7 @@ Keystone Installation Manually
       ```
 
 
-# Verify the Installation
+## Verify the Installation
 
 * create openrc.v3.domain:
 
@@ -192,3 +192,9 @@ Keystone Installation Manually
    | 0af810c9d972427db0274ecc9360f224 | admin |
    +----------------------------------+-------+
    ```
+
+## Reference
+
++ [Documentation of Openstack Keystone](https://docs.openstack.org/keystone/queens/install/keystone-install-rdo.html)
++ [Documentation of Openstack Installation Guide](https://docs.openstack.org/install-guide/environment.html)
++ [Reference Guide of pip](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)
