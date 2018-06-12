@@ -12,6 +12,8 @@ Keystone Installation Manually
    # yum -y install openstack-selinux
    ```
 
+   Once you find "No packages named python-pip", you can install epel-release to resolve it.
+
 * Database(Mariadb) Installation and Configuration
 
    1. Install the packages:
