@@ -6,7 +6,7 @@ Keystone Installation Manually
 * Environment Requirements Installation
 
    ```
-   # yum -y install gcc gcc-c++ libffi-devel libxml2-devel libxslt-devel libyaml-devel openldap-devel openssl-devel postgresql postgresql-devel python-devel sqlite-devel zip MySQL-python mariadb-devel python-pip
+   # yum -y install gcc gcc-c++ libffi-devel libxml2-devel libxslt-devel libyaml-devel openldap-devel openssl-devel postgresql postgresql-devel python-devel sqlite-devel zip MySQL-python mariadb-devel python-pip python-virtualenv
 
    # yum install centos-release-openstack-queens
    # yum -y install openstack-selinux
@@ -85,7 +85,7 @@ Keystone Installation Manually
       IDENTIFIED BY 'KEYSTONE_DBPASS';
       ```
 
-* Config /etc/keyston.conf
+* Config /etc/keystone/keyston.conf
 
    ```
    # mkdir /etc/keystone
@@ -182,7 +182,7 @@ Keystone Installation Manually
    # install openstackclient
    # virtualenv osc
    # source osc/bin/activate
-   # pip install python-openstack
+   # pip install python-openstackclient
    ```
 
    ```
