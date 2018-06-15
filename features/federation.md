@@ -3,25 +3,32 @@ Federation
 
 ### Some important definitions:
 
-Service Provider (SP)
+**Service Provider (SP)**
+
 A system entity that provides services to principals or other system entities, in this case, OpenStack Identity is the Service Provider.
 
-Identity Provider (IdP)
+**Identity Provider (IdP)**
+
 A directory service, such as LDAP, RADIUS and Active Directory, which allows users to login with a user name and password, is a typical source of authentication tokens (e.g. passwords) at an identity provider.
 
-SAML assertion
+**SAML assertion**
+
 Contains information about a user as provided by an IdP. It is an indication that a user has been authenticated.
 
-Mapping
+**Mapping**
+
 Adds a set of rules to map Federation protocol attributes to Identity API objects. An Identity Provider has exactly one mapping specified per protocol.
 
-Protocol
+**Protocol**
+
 Contains information that dictates which Mapping rules to use for an incoming request made by an IdP. An IdP may support multiple protocols. There are three major protocols for federated identity: OpenID, SAML, and OAuth.
 
-Unscoped token
+**Unscoped token**
+
 Allows a user to authenticate with the Identity service to exchange the unscoped token for a scoped token, by providing a project ID or a domain ID.
 
-Scoped token
+**Scoped token**
+
 Allows a user to use all OpenStack services apart from the Identity service.
 
 
@@ -66,7 +73,7 @@ Allows a user to use all OpenStack services apart from the Identity service.
 
    + create service provider resource in identity provider
       ```
-      openstack service provider create keystonesp \
+      # openstack service provider create keystonesp \
       --auth-url http://sp.keystone.demo:5000/identity/v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth \
       --service-provider-url http://sp.keystone.demo:5000/Shibboleth.sso/SAML2/ECP
 
