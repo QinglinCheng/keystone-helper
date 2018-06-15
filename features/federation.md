@@ -172,6 +172,13 @@ Allows a user to use all OpenStack services apart from the Identity service.
       ```
 
    + create identity provider resource in service provider
+
+      ```
+      # openstack group create federated_users
+      # openstack domain create federated_domain
+      # openstack role add --group federated_users --domain federated_domain _member_
+      ```
+
       rules.json
       ```json
       [
@@ -183,7 +190,7 @@ Allows a user to use all OpenStack services apart from the Identity service.
                       },
                       "group": {
                           "domain": {
-                              "name": "Default"
+                              "name": "federated_domain"
                           },
                           "name": "federated_users"
                       }
@@ -209,6 +216,29 @@ Allows a user to use all OpenStack services apart from the Identity service.
       ```
       # systemctl restart shibd httpd
       ```
+
+## Testing it all out
+
+   ```
+   import os
+
+   from keystoneauth1 import session
+   from keystoneauth1.identity import v3
+   from keystoneauth1.identity.v3 import k2k
+
+   auth = v3.Password(auth_url=os.environ.get('OS_AUTH_URL'),
+                      username=os.environ.get('OS_USERNAME'),
+                      password=os.environ.get('OS_PASSWORD'),
+                      user_domain_name=os.environ.get('OS_USER_DOMAIN_NAME'),
+                      project_name=os.environ.get('OS_PROJECT_NAME'),
+                      project_domain_name=os.environ.get('OS_PROJECT_DOMAIN_NAME'))
+   password_session = session.Session(auth=auth)
+   k2ksession = k2k.Keystone2Keystone(password_session.auth, 'keystonesp',
+                                      domain_name='federated_domain')
+   auth_ref = k2ksession.get_auth_ref(password_session)
+   scoped_token_id = auth_ref.auth_token
+   print('Scoped token id: %s' % scoped_token_id)
+   ```
 
 
 
