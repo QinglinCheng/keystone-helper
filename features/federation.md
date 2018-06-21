@@ -74,13 +74,13 @@ Allows a user to use all OpenStack services apart from the Identity service.
    + create service provider resource in identity provider
       ```
       # openstack service provider create keystonesp \
-      --auth-url http://sp.keystone.demo:5000/identity/v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth \
+      --auth-url http://sp.keystone.demo:5000/v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth \
       --service-provider-url http://sp.keystone.demo:5000/Shibboleth.sso/SAML2/ECP
 
       +--------------------+-----------------------------------------------------------------------------+
       | Field              | Value                                                                       |
       +--------------------+-----------------------------------------------------------------------------+
-      | auth_url           | http://sp.keystone.demo:5000/identity/v3/OS-                                |
+      | auth_url           | http://sp.keystone.demo:5000/v3/OS-                                         |
       |                    | FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth              |
       | description        | None                                                                        |
       | enabled            | True                                                                        |
@@ -140,7 +140,7 @@ Allows a user to use all OpenStack services apart from the Identity service.
          <Location /Shibboleth.sso>
              SetHandler shib
          </Location>
-         <Location /identity/v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth>
+         <Location /v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth>
              AuthType shibboleth
              Require valid-user
              ShibRequestSetting requireSession 1
@@ -153,7 +153,7 @@ Allows a user to use all OpenStack services apart from the Identity service.
          <Location /Shibboleth.sso>
              SetHandler shib
          </Location>
-         <Location /identity/v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth>
+         <Location /v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth>
              AuthType shibboleth
              Require valid-user
              ShibRequestSetting requireSession 1
