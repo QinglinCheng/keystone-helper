@@ -140,7 +140,7 @@ Allows a user to use all OpenStack services apart from the Identity service.
          <Location /Shibboleth.sso>
              SetHandler shib
          </Location>
-         <Location /v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth>
+         <Location /identity/v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth>
              AuthType shibboleth
              Require valid-user
              ShibRequestSetting requireSession 1
@@ -153,7 +153,7 @@ Allows a user to use all OpenStack services apart from the Identity service.
          <Location /Shibboleth.sso>
              SetHandler shib
          </Location>
-         <Location /v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth>
+         <Location /identity/v3/OS-FEDERATION/identity_providers/keystoneidp/protocols/saml2/auth>
              AuthType shibboleth
              Require valid-user
              ShibRequestSetting requireSession 1
@@ -190,7 +190,7 @@ Allows a user to use all OpenStack services apart from the Identity service.
                       },
                       "group": {
                           "domain": {
-                              "name": "federated_domain"
+                              "name": "Default"
                           },
                           "name": "federated_users"
                       }
@@ -210,6 +210,11 @@ Allows a user to use all OpenStack services apart from the Identity service.
       --remote-id http://idp.keystone.demo:5000/idp
 
       # openstack mapping create --rules rules.json k2kmap
+
+      # openstack federation protocol create \
+      --identity-provider keystoneidp \
+      --mapping k2kmap \
+      saml2
       ```
 
    + restart services
@@ -252,3 +257,4 @@ Allows a user to use all OpenStack services apart from the Identity service.
 + [Shibboleth Service Provider (SP) 2.6 Installation Guide](https://www.switch.ch/aai/guides/sp/installation/?os=centos7)
 + [OpenID Connect Relying Party and OAuth 2.0 Resource Server for Apache HTTP Server 2.x](https://github.com/zmartzone/mod_auth_openidc)
 + [Setup OpenID Connect](https://docs.openstack.org/keystone/latest/advanced-topics/federation/openidc.html)
++ [Shibboleth Apache config](https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPApacheConfig)
